@@ -5,11 +5,11 @@ Comes with 2 weapons (placed in the Lantern Category of your Q Menu). You have t
 
 You spawn with no oil, and upon equipping the lantern, you must left click to raise it. 
 
-###Controls
+### Controls
 * Left Click to Raise/Lower the lantern.
 * Right click to Enable/Disable the HUD showing the amount of Oil left
 
-###Features
+### Features
 * Two lanterns, one that runs on oil and one that runs forever
 * Oil entity to fill up the lantern with
 * Networked code, for multiplayer use. Works almost perfectly for players with 300+ ping!
@@ -22,11 +22,11 @@ You spawn with no oil, and upon equipping the lantern, you must left click to ra
 * HUD scales with screen size.
 * No game/addon requirements. Runs straight out of the box.
 
-###Credits
+### Credits
 * Original Model, textures and sounds taken from Amnesia: The Dark Descent, by Frictional Games
 * Everything else by me (coding, animation)
 
-###FAQ
+### FAQ
 **Q:** No oil :(
 **A:** Spawn it in the Entities->Lantern tab of the Q Menu
 
