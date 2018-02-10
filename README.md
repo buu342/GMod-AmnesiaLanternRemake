@@ -27,14 +27,11 @@ You spawn with no oil, and upon equipping the lantern, you must left click to ra
 * Everything else by me (coding, animation)
 
 ### FAQ
-**Q:** No oil :(
+**Q:** No oil :(<br/>
+**A:** Spawn it in the Entities->Lantern tab of the Q Menu<br/><br/>
 
-**A:** Spawn it in the Entities->Lantern tab of the Q Menu
-
-
-**Q:** No viewmodel/Light :(
-
-**A:** Try left clicking to raise the lantern. If using the oil version, make sure you have oil.
+**Q:** No viewmodel/Light :(<br/>
+**A:** Try left clicking to raise the lantern. If using the oil version, make sure you have oil.<br/><br/>
 
 
 **Q:** No HUD/Don't want HUD :(
