@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" 		"models/weapons/buu/oil"
+	"$envmap" 		"env_cubemap"
+	"$bumpmap"		"models/weapons/buu/oil_bump"
+
+	"$normalmapalphaenvmapmask" 1
+	"$phong" 		"1"
+	"$phongtint" 		"[0.9 0.8 0.7]"
+	"$phongboost"		"0.8"
+	"$phongexponent" 		"6"
+	"$phongfresnelranges" 	"[0.3 0.6 1]"
+	
+	"$rimlight" 		"0"
+}
