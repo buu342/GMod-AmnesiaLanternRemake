@@ -3,11 +3,11 @@ A complete rework (from the ground up) of my original [Amnesia: TDD Lantern Swep
 
 Comes with 2 weapons (placed in the Lantern Category of your Q Menu). You have the choice between a lantern which works forever, or a lantern that runs on Oil (which can be spawned via the entities tab, Lantern Catergory, in your Q menu). The oil lasts up to 5 minutes, and each jar increases your current oil by 75 seconds (Not going over). These settings can be easily changed by decompiling the .gma and editing the lua of the swep and entity. 
 
-You spawn with no oil, and upon equipping the lantern, you must left click to raise it. 
+You spawn with no oil, and upon equipping the lantern, you must left click to raise it. <br/>
 
 ### Controls
 * Left Click to Raise/Lower the lantern.
-* Right click to Enable/Disable the HUD showing the amount of Oil left
+* Right click to Enable/Disable the HUD showing the amount of Oil left<br/>
 
 ### Features
 * Two lanterns, one that runs on oil and one that runs forever
@@ -20,11 +20,11 @@ You spawn with no oil, and upon equipping the lantern, you must left click to ra
 * Worldmodel with Jigglebones
 * Proper thirdperson hold. Your playermodel is actually holding the swep like a lantern.
 * HUD scales with screen size.
-* No game/addon requirements. Runs straight out of the box.
+* No game/addon requirements. Runs straight out of the box.<br/>
 
 ### Credits
 * Original Model, textures and sounds taken from Amnesia: The Dark Descent, by Frictional Games
-* Everything else by me (coding, animation)
+* Everything else by me (coding, animation)<br/>
 
 ### FAQ
 **Q:** No oil :(<br/>
