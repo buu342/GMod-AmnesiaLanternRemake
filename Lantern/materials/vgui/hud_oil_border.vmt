@@ -1,7 +1,0 @@
-"UnlitGeneric"
-{
-	"$basetexture" "Vgui/hud_oil_border"
-	"$nolod" 1
-	"$vertexalpha" 1
-	"$vertexcolor" 1
-}
