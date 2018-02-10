@@ -28,22 +28,29 @@ You spawn with no oil, and upon equipping the lantern, you must left click to ra
 
 ### FAQ
 **Q:** No oil :(
+
 **A:** Spawn it in the Entities->Lantern tab of the Q Menu
 
 **Q:** No viewmodel/Light :(
+
 **A:** Try left clicking to raise the lantern. If using the oil version, make sure you have oil.
 
 **Q:** No HUD/Don't want HUD :(
+
 **A:** HUD is only for the Oil lantern. Right click to hide/show the hud.
 
 **Q:** Can't pick up objects with E while the lantern is out
+
 **A:** Yes. It's on purpose. Lower the lantern or holster the swep.
 
 **Q:** I have FPS issues with the lights
+
 **A:** Blame whoever runs GMod. It's a problem with Dynamic Lights. If this SWEP causes FPS problems, so will the light tool in Sandbox
 
 **Q:** Gmod says "Amnesia Lantern Rework is Creating Script Errors"
+
 **A:** [Watch this video.](https://www.youtube.com/watch?v=ppH2--qS9Sc)
 
 **Q:** Can you please make X
+
 **A:** No.
