@@ -1,4 +1,13 @@
 "VertexlitGeneric"
 {
-	"$basetexture" 	"models/weapons/buu/handle"
+	"$basetexture" 		"models/weapons/buu/handle"
+	"$bumpmap"		"models/weapons/buu/handle_bump"
+
+	"$phong" 		"1"
+	"$phongtint" 		"[0.9 0.8 0.7]"
+	"$phongboost"		"0.8"
+	"$phongexponent" 		"6"
+	"$phongfresnelranges" 	"[0.3 0.6 1]"
+	
+	"$rimlight" 		"0"
 }

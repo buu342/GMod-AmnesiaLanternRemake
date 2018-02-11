@@ -8,6 +8,7 @@ $bodygroup "studio"
 $proceduralbones c_arms_vrd.vrd
 
 $cdmaterials "models\weapons\buu\"
+$cdmaterials "models\weapons\buu\lod\"
 
 $texturegroup "lights"
 {
@@ -90,3 +91,36 @@ $bonemerge "ValveBiped.Bip01_R_Finger12"
 $bonemerge "ValveBiped.Bip01_R_Finger0"
 $bonemerge "ValveBiped.Bip01_R_Finger01"
 $bonemerge "ValveBiped.Bip01_R_Finger02"
+
+$lod 15
+{
+	replacemodel "view.smd" "view_lod1.smd"
+}
+
+$lod 30
+{
+	replacemodel "view.smd" "view_lod2.smd"
+	replacematerial "handle" "handle_LOD2"
+	replacematerial "lantern" "lantern_LOD2"
+}
+
+$lod 45
+{
+	replacemodel "view.smd" "view_lod3.smd"
+	replacematerial "handle" "handle_LOD3"
+	replacematerial "lantern" "lantern_LOD3"
+}
+
+$lod 60
+{
+	replacemodel "view.smd" "view_lod4.smd"
+	replacematerial "handle" "handle_LOD3"
+	replacematerial "lantern" "lantern_LOD3"
+}
+
+$shadowlod
+{
+	replacemodel "view.smd" "view_lod2.smd"
+	replacematerial "handle" "handle_LOD2"
+	replacematerial "lantern" "lantern_LOD2"
+}
