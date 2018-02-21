@@ -18,8 +18,6 @@ SWEP.AdminOnly 		= false
 SWEP.ViewModelFOV 	= 54
 SWEP.ViewModel 		= "models/weapons/c_lantern.mdl" 
 SWEP.WorldModel 	= "models/weapons/w_lantern.mdl"
-SWEP.WorldModelHold = "models/weapons/c_lantern.mdl" 	-- Jiggly Worldmodel for when being held by player
-SWEP.WorldModelDrop	= "models/weapons/w_lantern.mdl"	-- Non Jiggly Worldmodel with physics for when dropped.
 
 SWEP.ViewModelFlip 	= false
 
@@ -71,7 +69,6 @@ function SWEP:Initialize()
 	self:SetLantern_Holstered(true)
 	self:SetHoldType(self.HoldType)
 	self:SetLantern_Equipped(false)
-	self.WorldModel = self.WorldModelDrop
 end
 
 
@@ -143,33 +140,7 @@ end
 ---------------------------------------------------*/
 
 function SWEP:Think()
-	if self:GetLantern_Holstered() == false then
-		if CLIENT then
-			local ent = LocalPlayer():GetShootPos()
-			local pos = ent
-				pos = pos + LocalPlayer():GetForward() * 30
-				pos = pos + LocalPlayer():GetRight() * 5
-				pos = pos + LocalPlayer():GetUp() * -20
-				
-			local dlight = DynamicLight( LocalPlayer():EntIndex() )
-			if ( dlight ) then
-				dlight.pos = pos
-				dlight.r = 255
-				dlight.g = 128
-				dlight.b = 0
-				dlight.brightness = 2
-				dlight.Decay = 256
-				dlight.Size = math.min	(256,(CurTime()-self:GetLantern_LightSize())*200)
-				dlight.DieTime = CurTime() + 1
-			end
-		end
-	end
 	self.MyOwner = self.Owner
-	if self.Owner != nil then
-		self.WorldModel = self.WorldModelHold
-	else
-		self.WorldModel = self.WorldModelDrop
-	end
 end
 
 
@@ -261,8 +232,25 @@ if CLIENT then
 		local MoveForce = CalcMoveForce(ply)
 			
 		TestVectorAngleTarget = TestVectorAngleTarget - Vector(math.cos(BreatTime) / BreatheAmplitude, (math.cos(BreatTime / 2) / BreatheAmplitude),0)
-		--ang = ang + (ang - Current_Aim*-1)
+		
+		/*--------------------------------------------
+		--				Viewmodel Sway				--
+		--------------------------------------------*/
+		
+		self.LastEyeSpeed = self.EyeSpeed
+		
+		Current_Aim = LerpAngle(5*FrameTime(), Current_Aim, ply:EyeAngles())
+		
+		self.EyeSpeed = Current_Aim - ply:EyeAngles()
+		self.EyeSpeed.y = math.AngleDifference( Current_Aim.y, ply:EyeAngles().y ) -- Thank you MushroomGuy for telling me this function even existed
+		
+		ang:RotateAroundAxis(ang:Right(), math.Clamp(4*self.EyeSpeed.p/60,-4,4))
+		ang:RotateAroundAxis(ang:Up(), math.Clamp(-4*self.EyeSpeed.y/60,-4,4))
+
+		pos = pos + math.Clamp((-1.5*self.EyeSpeed.p/60),-1.5,1.5) * ang:Up()
+		pos = pos + math.Clamp((-1.5*self.EyeSpeed.y/60),-1.5,1.5) * ang:Right()
 		return pos, ang
+
 	end
 end
 
@@ -304,13 +292,13 @@ end
 ---------------------------------------------------*/
 
 function SWEP:DrawWorldModel()
-
+	
 	if self:GetLantern_Holstered() == false then
 		self:SetSkin(1)
 	else
 		self:SetSkin(0)
 	end
-	
+
 	self:DrawModel()
 end
 
@@ -386,6 +374,28 @@ hook.Add("Think","LanternHandFixThink",function()
 					v:ManipulateBoneAngles( v:LookupBone(bonetotest), Angle(0,0,0) )
 				end
 				v:SetNWBool("Lantern_JustHolsteredIt", false)
+			end
+		end
+		if IsValid(v) && IsValid(v:GetActiveWeapon()) && (v:GetActiveWeapon():GetClass() == "buu_lantern" || v:GetActiveWeapon():GetClass() == "buu_lantern_oil") then
+			v:GetActiveWeapon().WorldModel = "models/weapons/c_lantern.mdl"
+			if v:GetActiveWeapon():GetLantern_Holstered() == false then
+				local ent = v:GetShootPos()
+				local pos = ent
+					pos = pos + v:GetForward() * 30
+					pos = pos + v:GetRight() * 5
+					pos = pos + v:GetUp() * -20
+				
+				local dlight = CLIENT and DynamicLight( v:EntIndex() )
+				if ( dlight ) then
+					dlight.Pos = pos
+					dlight.r = 255
+					dlight.g = 128
+					dlight.b = 0
+					dlight.brightness = 2
+					dlight.Decay = 256
+					dlight.Size = math.min(256,(CurTime()-v:GetActiveWeapon():GetLantern_LightSize())*200)
+					dlight.DieTime = CurTime() + 1
+				end
 			end
 		end
 	end

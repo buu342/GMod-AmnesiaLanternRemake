@@ -11,6 +11,9 @@ SWEP.Author = "Buu342"
 SWEP.Instructions = "Equip to use. Fill with oil to keep using. Right Click to toggle hiding the oil."
 SWEP.Category 		= "Lantern"
     
+SWEP.ViewModel 		= "models/weapons/c_lantern.mdl" 
+SWEP.WorldModel 	= "models/weapons/w_lantern.mdl"	
+
 SWEP.Spawnable		= true
 SWEP.AdminSpawnable	= true
 SWEP.AdminOnly 		= false	
@@ -102,25 +105,6 @@ end
 
 function SWEP:Think()
 	if self:GetLantern_Holstered() == false then
-		if CLIENT then
-			local ent = LocalPlayer():GetShootPos()
-			local pos = ent
-				pos = pos + LocalPlayer():GetForward() * 30
-				pos = pos + LocalPlayer():GetRight() * 5
-				pos = pos + LocalPlayer():GetUp() * -20
-				
-			local dlight = DynamicLight( LocalPlayer():EntIndex() )
-			if ( dlight ) then
-				dlight.pos = pos
-				dlight.r = 255
-				dlight.g = 128
-				dlight.b = 0
-				dlight.brightness = 2
-				dlight.Decay = 256
-				dlight.Size = math.min	(256,(CurTime()-self:GetLantern_LightSize())*200)
-				dlight.DieTime = CurTime() + 1
-			end
-		end
 		if self:GetLantern_EnableTime() < CurTime() then
 			self.Owner:SetNWFloat("LanternOil",self.Owner:GetNWFloat("LanternOil")-1)
 			self:SetLantern_EnableTime(CurTime()+1)
@@ -128,11 +112,6 @@ function SWEP:Think()
 	end
 	
 	self.MyOwner = self.Owner
-	if self.Owner != nil then
-		self.WorldModel = self.WorldModelHold
-	else
-		self.WorldModel = self.WorldModelDrop
-	end	
 	
 	if self:GetLantern_Holstered() == false && self.Owner:GetNWFloat("LanternOil") < 1 then
 		self.Weapon:SendWeaponAnim( ACT_VM_HOLSTER )
